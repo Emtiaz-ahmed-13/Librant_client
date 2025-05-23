@@ -3,11 +3,12 @@ import { RootState } from "../store";
 
 // Check for development or production environment
 const isDevelopment = import.meta.env.MODE === "development";
-
+// https://librant-server.vercel.app
+// http://localhost:5001/api/v1
 // Using port 5002 since that's the port your server is running on
 const API_BASE_URL = isDevelopment
-  ? "http://localhost:5001/api/v1"
-  : "https://librant-server.vercel.app";
+  ? "https://librant-server.vercel.app"
+  : "http://localhost:5001/api/v1";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API_BASE_URL,
