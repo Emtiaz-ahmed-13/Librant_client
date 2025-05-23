@@ -7,7 +7,7 @@ const isDevelopment = import.meta.env.MODE === "development";
 // http://localhost:5001/api/v1
 const API_BASE_URL = isDevelopment
   ? "http://localhost:5001/api/v1"
-  : "https://librant-server.vercel.app";
+  : "https://librant-server.vercel.app/api/v1";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API_BASE_URL,
