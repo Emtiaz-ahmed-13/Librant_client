@@ -1,8 +1,8 @@
-import AdminDashboard from "../Pages/Admin/AdminDashboard";
-import AddBookToStore from "../Pages/Admin/AddBookToStore";
-import { TRoutes } from "../Types/global";
 import PrivateRoute from "../components/RouteComponents/PrivateRoute";
+import AddBookToStore from "../Pages/Admin/AddBookToStore";
+import AdminDashboard from "../Pages/Admin/AdminDashboard";
 import UpdateBook from "../Pages/Admin/UpdateBook";
+import { TRoutes } from "../Types/global";
 
 const AdminRoutes: TRoutes[] = [
   {

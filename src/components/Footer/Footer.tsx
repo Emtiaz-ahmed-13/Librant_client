@@ -5,7 +5,6 @@ import {
   InstagramOutlined,
   LinkedinOutlined,
   MailOutlined,
-  PhoneOutlined,
   SendOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
@@ -27,32 +26,42 @@ const Footer = () => {
               </span>
             </div>
             <p className="mb-6 text-gray-400">
-              Librant is a premier online bookstore offering a vast collection
-              of books across all genres. From bestsellers to rare finds, we
-              have something for every reader.
+              Librant is one of the largest online bookstores in Bangladesh.
+              Here you can easily order popular local and international books,
+              academic books, literature, children's books, Islamic books, and
+              many more categories. We deliver books to your doorstep, anywhere
+              in Bangladesh.
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://twitter.com/librantbd"
                 className="text-gray-400 hover:text-indigo-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <TwitterOutlined className="text-xl" />
               </a>
               <a
-                href="#"
+                href="https://facebook.com/librantbd"
                 className="text-gray-400 hover:text-indigo-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FacebookOutlined className="text-xl" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/librantbd"
                 className="text-gray-400 hover:text-indigo-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <InstagramOutlined className="text-xl" />
               </a>
               <a
-                href="#"
+                href="https://linkedin.com/company/librantbd"
                 className="text-gray-400 hover:text-indigo-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkedinOutlined className="text-xl" />
               </a>
@@ -164,19 +173,15 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center">
-                <PhoneOutlined className="mr-3 text-indigo-400" />
-                <span>+1 (234) 567-8900</span>
-              </li>
-              <li className="flex items-center">
                 <MailOutlined className="mr-3 text-indigo-400" />
-                <span>support@librant.com</span>
+                <span>support@librant.com.bd</span>
               </li>
               <li className="flex items-start">
                 <EnvironmentOutlined className="mr-3 text-indigo-400 mt-1" />
                 <span>
-                  1203 Town Center Drive
+                  69/1, Panthapath, Dhanmondi
                   <br />
-                  Arlington, VA 22201
+                  Dhaka 1205, Bangladesh
                 </span>
               </li>
             </ul>

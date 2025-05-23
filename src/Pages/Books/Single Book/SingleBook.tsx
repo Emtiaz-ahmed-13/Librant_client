@@ -107,29 +107,35 @@ const SingleBook = () => {
               </div>
               <p className="text-gray-700 mb-6">{description}</p>
 
-              <div className="mb-6">
-                <label
-                  htmlFor="quantity"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Quantity:
-                </label>
-                <input
-                  type="number"
-                  name="quantity"
-                  ref={
-                    quantityRef as unknown as
-                      | LegacyRef<HTMLInputElement>
-                      | undefined
-                  }
-                  min="1"
-                  defaultValue={1}
-                  className="w-12 text-center rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
+              <div className="mb-6 flex items-end gap-4">
+                <div>
+                  <label
+                    htmlFor="quantity"
+                    className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1"
+                  >
+                    Quantity:
+                  </label>
+                  <input
+                    type="number"
+                    name="quantity"
+                    ref={
+                      quantityRef as unknown as
+                        | LegacyRef<HTMLInputElement>
+                        | undefined
+                    }
+                    min="1"
+                    defaultValue={1}
+                    className="w-16 text-center rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-300 dark:focus:ring-indigo-700 focus:outline-none py-2 transition-all"
+                  />
+                </div>
+                <span className="font-bold text-base text-gray-900 dark:text-white ml-2">
+                  Only{" "}
+                  <span className="text-red-500 text-xl font-extrabold">
+                    {quantity}
+                  </span>{" "}
+                  left
+                </span>
               </div>
-              <span className="font-bold ">
-                Only <span className="text-red-500">{quantity}</span> left
-              </span>
 
               <div className="flex space-x-4 mb-6 mt-3">
                 <button

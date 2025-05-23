@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../Navbar.tsx/Navbar";
 import Footer from "../Footer/Footer";
+import ApiStatusChecker from "../Home/ApiStatusChecker";
+import Navbar from "../Navbar.tsx/Navbar";
 
 const MainLayout = () => {
   return (
@@ -8,6 +9,7 @@ const MainLayout = () => {
       <Navbar />
       <Outlet />
       <Footer />
+      <ApiStatusChecker />
     </div>
   );
 };

@@ -6,9 +6,13 @@ import MainLayout from "../components/Layout/MainLayout";
 import PrivateRoute from "../components/RouteComponents/PrivateRoute";
 import PublicRoute from "../components/RouteComponents/PublicRoute";
 import About from "../Pages/About/About";
+import Blog from "../Pages/Blog/Blog";
 import AllBooks from "../Pages/Books/All Books/AllBooks";
+import Bestsellers from "../Pages/Books/Bestsellers/Bestsellers";
+import NewArrivals from "../Pages/Books/NewArrivals/NewArrivals";
 import SingleBook from "../Pages/Books/Single Book/SingleBook";
 import CheckoutPage from "../Pages/CheckOut/CheckOut";
+import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import OrderConfirmation from "../Pages/OrderConfirmation/OrderConfirmation";
 import Register from "../Pages/Register/Register";
@@ -31,6 +35,22 @@ const router = createBrowserRouter([
       {
         path: "books/:id",
         element: <SingleBook />,
+      },
+      {
+        path: "bestsellers",
+        element: <Bestsellers />,
+      },
+      {
+        path: "new-arrivals",
+        element: <NewArrivals />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
       {
         path: "checkout",

@@ -4,7 +4,7 @@ import { RootState } from "../store";
 // Check for development or production environment
 const isDevelopment = import.meta.env.MODE === "development";
 
-// If in development, use localhost, otherwise use your deployed server
+// Using port 5002 since that's the port your server is running on
 const API_BASE_URL = isDevelopment
   ? "http://localhost:5001/api/v1"
   : "https://librant-server.vercel.app/api/v1";

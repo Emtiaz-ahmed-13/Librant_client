@@ -125,153 +125,211 @@ const AllBooks = () => {
   const isLoading = booksLoading || categoriesLoading || authorsLoading;
 
   return (
-    <div className="w-[90%] mx-auto p-6">
-      <h1 className="text-center text-3xl font-bold my-5">All Collection</h1>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {/* Filter Options */}
-        <div className="col-span-1 bg-gray-50 rounded-lg p-5">
-          <h3 className="text-2xl font-semibold mb-2">Filter</h3>
-          <hr />
-          <div className="my-3 space-y-3">
-            <div className="space-y-2">
-              <h4 className="text-lg font-semibold">Price Range</h4>
-              <div className="flex flex-col gap-2 px-2">
-                <Checkbox onChange={onChange} value={"range-0,20"}>
-                  $0 - $20
-                </Checkbox>
-                <Checkbox onChange={onChange} value={"range-20,50"}>
-                  $20 - $50
-                </Checkbox>
-                <Checkbox onChange={onChange} value={"range-50,100"}>
-                  $50 - $100
-                </Checkbox>
-                <Checkbox onChange={onChange} value={"range-100,500"}>
-                  $100+
-                </Checkbox>
+    <div className="w-full min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-white dark:from-indigo-950 dark:via-purple-950 dark:to-slate-900 py-12 px-2">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-center text-4xl font-extrabold text-gray-900 dark:text-white mb-2">
+          All{" "}
+          <span className="text-indigo-600 dark:text-indigo-400">Books</span>
+        </h1>
+        <div className="w-32 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-10 rounded-full shadow-lg" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Filter Options */}
+          <div className="col-span-1">
+            <div className="bg-gradient-to-br from-indigo-100 via-purple-100 to-white dark:from-indigo-900 dark:via-purple-900 dark:to-slate-800 rounded-2xl shadow-xl p-6 border border-indigo-100 dark:border-indigo-900 sticky top-28 z-20">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-indigo-700 dark:text-indigo-300 flex items-center gap-2">
+                  <span>🔎</span> Filter
+                </h3>
+                <button
+                  onClick={() => setParams({})}
+                  className="px-3 py-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold shadow hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 text-xs"
+                >
+                  Clear All
+                </button>
               </div>
-            </div>
-            <hr />
-
-            <div className="flex flex-col gap-2">
-              <h4 className="text-lg font-semibold">Availability</h4>
-              <div className="flex flex-col gap-2 px-2">
-                <Checkbox onChange={onChange} value={"inStock-" + true}>
-                  In Stock
-                </Checkbox>
-                <Checkbox onChange={onChange} value={"inStock-" + false}>
-                  Out of Stock
-                </Checkbox>
-              </div>
-            </div>
-            <hr />
-
-            <div className="flex flex-col gap-2">
-              <h4 className="text-lg font-semibold">Author</h4>
-              <div className="flex flex-col gap-2 px-2">
-                {authorsLoading ? (
-                  <p>Loading authors...</p>
-                ) : (
-                  authors.map((author: { _id: string; count: number }) => (
+              <div className="space-y-6">
+                {/* Price Range */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-4 border border-indigo-50 dark:border-indigo-900">
+                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2 mb-3">
+                    <span>💰</span> Price Range
+                  </h4>
+                  <div className="flex flex-col gap-2">
                     <Checkbox
-                      key={author._id}
+                      className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
                       onChange={onChange}
-                      value={"author-" + author._id}
+                      value={"range-0,20"}
                     >
-                      {author._id} ({author.count})
+                      $0 - $20
                     </Checkbox>
-                  ))
-                )}
-              </div>
-            </div>
-            <hr />
-
-            <div className="flex flex-col gap-2">
-              <h4 className="text-lg font-semibold">Category</h4>
-              <div className="flex flex-col gap-2 px-2">
-                {categoriesLoading ? (
-                  <p>Loading categories...</p>
-                ) : (
-                  categories.map((category: { _id: string; count: number }) => (
                     <Checkbox
-                      key={category._id}
+                      className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
                       onChange={onChange}
-                      value={`category-${category._id}`}
+                      value={"range-20,50"}
                     >
-                      {category._id} ({category.count})
+                      $20 - $50
                     </Checkbox>
-                  ))
-                )}
+                    <Checkbox
+                      className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
+                      onChange={onChange}
+                      value={"range-50,100"}
+                    >
+                      $50 - $100
+                    </Checkbox>
+                    <Checkbox
+                      className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
+                      onChange={onChange}
+                      value={"range-100,500"}
+                    >
+                      $100+
+                    </Checkbox>
+                  </div>
+                </div>
+                {/* Availability */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-4 border border-indigo-50 dark:border-indigo-900">
+                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2 mb-3">
+                    <span>📦</span> Availability
+                  </h4>
+                  <div className="flex flex-col gap-2">
+                    <Checkbox
+                      className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
+                      onChange={onChange}
+                      value={"inStock-" + true}
+                    >
+                      In Stock
+                    </Checkbox>
+                    <Checkbox
+                      className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
+                      onChange={onChange}
+                      value={"inStock-" + false}
+                    >
+                      Out of Stock
+                    </Checkbox>
+                  </div>
+                </div>
+                {/* Author */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-4 border border-indigo-50 dark:border-indigo-900">
+                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2 mb-3">
+                    <span>🖊️</span> Author
+                  </h4>
+                  <div className="flex flex-col gap-2 max-h-40 overflow-y-auto pr-2">
+                    {authorsLoading ? (
+                      <p className="text-gray-800 dark:text-gray-100">
+                        Loading authors...
+                      </p>
+                    ) : (
+                      authors.map((author: { _id: string; count: number }) => (
+                        <Checkbox
+                          className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
+                          key={author._id}
+                          onChange={onChange}
+                          value={"author-" + author._id}
+                        >
+                          {author._id} ({author.count})
+                        </Checkbox>
+                      ))
+                    )}
+                  </div>
+                </div>
+                {/* Category */}
+                <div className="bg-white dark:bg-slate-800 rounded-xl shadow p-4 border border-indigo-50 dark:border-indigo-900">
+                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2 mb-3">
+                    <span>🏷️</span> Category
+                  </h4>
+                  <div className="flex flex-col gap-2 max-h-40 overflow-y-auto pr-2">
+                    {categoriesLoading ? (
+                      <p className="text-gray-800 dark:text-gray-100">
+                        Loading categories...
+                      </p>
+                    ) : (
+                      categories.map(
+                        (category: { _id: string; count: number }) => (
+                          <Checkbox
+                            className="rounded-full px-3 py-2 text-gray-800 dark:text-gray-100"
+                            key={category._id}
+                            onChange={onChange}
+                            value={`category-${category._id}`}
+                          >
+                            {category._id} ({category.count})
+                          </Checkbox>
+                        )
+                      )
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* Search And Sort */}
-        <div className="col-span-1 md:col-span-3">
-          <div className="h-14 w-full border border-gray-500/20 flex flex-col sm:flex-row justify-between items-center p-2 rounded-lg">
-            <div className="mx-3 w-full sm:w-auto">
-              <Search
-                placeholder="Search Book e.g title"
-                onSearch={(value) =>
-                  setParams((prev) => ({ ...prev, searchTerm: value }))
-                }
-                style={{ width: "100%", maxWidth: "300px" }}
-              />
+          {/* Search And Sort */}
+          <div className="col-span-1 md:col-span-3">
+            <div className="h-16 w-full bg-white dark:bg-slate-800 border border-indigo-100 dark:border-indigo-900 flex flex-col sm:flex-row justify-between items-center p-4 rounded-2xl shadow mb-6">
+              <div className="mx-3 w-full sm:w-auto">
+                <Search
+                  placeholder="Search Book e.g title"
+                  onSearch={(value) =>
+                    setParams((prev) => ({ ...prev, searchTerm: value }))
+                  }
+                  style={{ width: "100%", maxWidth: "300px" }}
+                  className="rounded-lg"
+                />
+              </div>
+              <div className="flex justify-between items-center gap-3 mx-3 w-full sm:w-auto mt-2 sm:mt-0">
+                <Select
+                  style={{ borderRadius: "8px", width: "140px" }}
+                  defaultValue="Sort-by"
+                  onChange={handleSort}
+                  options={[
+                    { value: "h-t-l", label: "Price ↓" },
+                    { value: "l-t-h", label: "Price ↑" },
+                  ]}
+                  className="bg-white dark:bg-slate-800 border border-indigo-100 dark:border-indigo-900"
+                />
+                <span className="text-gray-700 dark:text-gray-200 font-semibold">
+                  {processedBooks.length} Books
+                </span>
+              </div>
             </div>
-            <div className="flex justify-between items-center gap-3 mx-3 w-full sm:w-auto mt-2 sm:mt-0">
-              <Select
-                style={{ borderRadius: "5px", width: "120px" }}
-                defaultValue="Sort-by"
-                onChange={handleSort}
-                options={[
-                  { value: "h-t-l", label: "Price ↓" },
-                  { value: "l-t-h", label: "Price ↑" },
-                ]}
-              />
-              <span>{processedBooks.length} Books</span>
-            </div>
+            {isLoading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 my-4">
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+              </div>
+            ) : error ? (
+              <div className="text-center py-8 bg-gray-50 dark:bg-slate-800 rounded-2xl border border-indigo-100 dark:border-indigo-900 my-4 shadow">
+                <p className="text-red-500 mb-4">
+                  Failed to load books. The server might be busy or temporarily
+                  down.
+                </p>
+                <button
+                  onClick={() => refetch()}
+                  className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold shadow hover:from-indigo-700 hover:to-purple-700 transition-all duration-200"
+                >
+                  Retry
+                </button>
+              </div>
+            ) : processedBooks.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 my-4">
+                {processedBooks.map((book: IBook) => (
+                  <Card key={book._id} book={book} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8 bg-gray-50 dark:bg-slate-800 rounded-2xl border border-indigo-100 dark:border-indigo-900 my-4 shadow">
+                <p className="text-gray-500 dark:text-gray-300">
+                  No books found matching your criteria.
+                </p>
+                <button
+                  onClick={() => setParams({})}
+                  className="mt-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold shadow hover:from-indigo-700 hover:to-purple-700 transition-all duration-200"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            )}
           </div>
-
-          {isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-            </div>
-          ) : error ? (
-            <div className="text-center py-8 bg-gray-50 rounded-lg border border-gray-200 my-4">
-              <p className="text-red-500 mb-4">
-                Failed to load books. The server might be busy or temporarily
-                down.
-              </p>
-              <button
-                onClick={() => refetch()}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-              >
-                Retry
-              </button>
-            </div>
-          ) : processedBooks.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-4">
-              {processedBooks.map((book: IBook) => (
-                <Card key={book._id} book={book} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-8 bg-gray-50 rounded-lg border border-gray-200 my-4">
-              <p className="text-gray-500">
-                No books found matching your criteria.
-              </p>
-              <button
-                onClick={() => setParams({})}
-                className="mt-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-              >
-                Clear Filters
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>

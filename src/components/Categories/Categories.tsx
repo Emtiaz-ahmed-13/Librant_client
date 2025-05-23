@@ -39,19 +39,20 @@ const Categories = () => {
   };
 
   return (
-    <div className="mb-16">
-      <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-        Browse by <span className="text-indigo-600">Category</span>
+    <div className="mb-16 py-16 px-2 bg-gradient-to-br from-white via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-indigo-950 dark:to-slate-900 rounded-3xl shadow-xl">
+      <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4 text-center">
+        Browse by{" "}
+        <span className="text-indigo-600 dark:text-indigo-400">Category</span>
       </h2>
-
-      <Row gutter={[16, 16]} justify="center">
+      <div className="w-32 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-10 rounded-full shadow-lg" />
+      <Row gutter={[32, 32]} justify="center">
         {isLoading ? (
           // Skeleton loader
           Array(6)
             .fill(null)
             .map((_, index) => (
-              <Col xs={12} sm={8} md={6} lg={4} key={index}>
-                <Card className="h-36 text-center">
+              <Col xs={24} sm={12} md={8} lg={6} key={index}>
+                <Card className="h-44 flex items-center justify-center rounded-2xl shadow-md bg-white dark:bg-slate-800">
                   <Skeleton active paragraph={{ rows: 1 }} />
                 </Card>
               </Col>
@@ -77,23 +78,35 @@ const Categories = () => {
           </Col>
         ) : categories?.length > 0 ? (
           // Categories from API
-          categories.map((category: CategoryItem) => (
-            <Col xs={12} sm={8} md={6} lg={4} key={category._id}>
-              <Link to={`/books/category/${category._id}`}>
-                <Card
-                  hoverable
-                  className="h-36 text-center transition-all duration-300 border border-gray-200 hover:border-indigo-400 hover:shadow-md"
+          <>
+            {categories.map((category: CategoryItem) => (
+              <Col xs={24} sm={12} md={8} lg={6} key={category._id}>
+                <Link to={`/books/category/${category._id}`}>
+                  <Card
+                    hoverable
+                    className="h-44 flex flex-col items-center justify-center transition-all duration-300 border border-indigo-100 dark:border-indigo-800 rounded-2xl shadow-lg bg-white dark:bg-slate-800 group hover:scale-105 hover:shadow-2xl hover:border-indigo-400 dark:hover:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30"
+                  >
+                    <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                      {category.icon || getCategoryIcon(category.name)}
+                    </div>
+                    <div className="font-bold text-lg text-gray-800 dark:text-white group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors">
+                      {category.name}
+                    </div>
+                  </Card>
+                </Link>
+              </Col>
+            ))}
+            {categories.length > 8 && (
+              <Col span={24} className="text-center mt-8">
+                <Button
+                  type="primary"
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 border-0 px-8 py-3 rounded-xl text-lg font-bold shadow hover:from-indigo-700 hover:to-purple-700"
                 >
-                  <div className="text-4xl mb-2">
-                    {category.icon || getCategoryIcon(category.name)}
-                  </div>
-                  <div className="font-medium text-gray-700">
-                    {category.name}
-                  </div>
-                </Card>
-              </Link>
-            </Col>
-          ))
+                  View All Categories
+                </Button>
+              </Col>
+            )}
+          </>
         ) : (
           // No categories found
           <Col span={24}>

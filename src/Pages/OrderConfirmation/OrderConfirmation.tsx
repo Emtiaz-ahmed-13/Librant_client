@@ -1,8 +1,9 @@
-import { Card, Button, Table } from "antd";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../Redux/hook";
-import { clearCart } from "../../Redux/Features/Orders/cartSlice";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button, Card, Table } from "antd";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { clearCart } from "../../Redux/Features/Orders/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../Redux/hook";
 
 const OrderConfirmation: React.FC = () => {
   const dispatch = useAppDispatch();
